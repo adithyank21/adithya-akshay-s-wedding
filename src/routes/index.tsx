@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import wedding1 from "@/assets/wedding-1.jpeg.asset.json";
 import mandala from "@/assets/mandala.png";
@@ -27,136 +27,151 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const navigate = useNavigate();
   const [opening, setOpening] = useState(false);
+
+  const handleOpen = () => {
+    if (opening) return;
+    setOpening(true);
+    setTimeout(() => navigate({ to: "/invitation" }), 1400);
+  };
+
   return (
-    <main className="relative flex min-h-[100svh] items-center justify-center overflow-hidden px-4 py-8 sm:py-12">
+    <main className="relative min-h-[100svh] overflow-hidden bg-[--maroon-deep]">
       <MusicToggle />
 
-      {/* Soft mandala backdrop */}
+      {/* Backdrop image faint */}
+      <img
+        src={wedding1.url}
+        alt=""
+        aria-hidden
+        className="absolute inset-0 h-full w-full object-cover opacity-15"
+      />
       <img
         src={mandala}
         alt=""
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[140vmin] w-[140vmin] -translate-x-1/2 -translate-y-1/2 opacity-[0.07] animate-spin-slow"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[160vmin] w-[160vmin] -translate-x-1/2 -translate-y-1/2 opacity-[0.10] animate-spin-slow"
       />
 
-      {/* Envelope / Letter */}
+      {/* Center content (revealed as doors open) */}
       <div
-        className={`relative w-full max-w-[420px] transition-all duration-700 ${
-          opening ? "-translate-y-4 scale-[1.02] opacity-90" : ""
+        className={`absolute inset-0 z-0 flex flex-col items-center justify-center px-6 text-center transition-opacity duration-700 ${
+          opening ? "opacity-100" : "opacity-0"
+        }`}
+        style={{ color: "var(--cream)" }}
+      >
+        <img src={lotus} alt="" aria-hidden className="h-16 w-auto" />
+        <p className="mt-6 font-script text-5xl gold-text">Welcome</p>
+      </div>
+
+      {/* LEFT DOOR */}
+      <div
+        className="absolute inset-y-0 left-0 z-10 w-1/2 origin-left transition-transform duration-[1400ms] ease-[cubic-bezier(.7,.05,.3,1)]"
+        style={{
+          transform: opening ? "translateX(-100%)" : "translateX(0)",
+          background:
+            "linear-gradient(110deg, oklch(0.22 0.10 25) 0%, oklch(0.32 0.12 25) 55%, oklch(0.26 0.11 25) 100%)",
+          boxShadow: "inset -1px 0 0 oklch(0.72 0.13 80 / 0.7), inset -8px 0 28px oklch(0 0 0 / 0.4)",
+        }}
+      >
+        <DoorOrnament side="left" />
+      </div>
+
+      {/* RIGHT DOOR */}
+      <div
+        className="absolute inset-y-0 right-0 z-10 w-1/2 origin-right transition-transform duration-[1400ms] ease-[cubic-bezier(.7,.05,.3,1)]"
+        style={{
+          transform: opening ? "translateX(100%)" : "translateX(0)",
+          background:
+            "linear-gradient(250deg, oklch(0.22 0.10 25) 0%, oklch(0.32 0.12 25) 55%, oklch(0.26 0.11 25) 100%)",
+          boxShadow: "inset 1px 0 0 oklch(0.72 0.13 80 / 0.7), inset 8px 0 28px oklch(0 0 0 / 0.4)",
+        }}
+      >
+        <DoorOrnament side="right" />
+      </div>
+
+      {/* Centerpiece content (sits above doors while closed, fades on open) */}
+      <div
+        className={`absolute inset-0 z-20 flex items-center justify-center px-5 transition-opacity duration-500 ${
+          opening ? "pointer-events-none opacity-0" : "opacity-100"
         }`}
       >
-        {/* Wax seal floating */}
-        <div className="pointer-events-none absolute -top-5 left-1/2 z-20 -translate-x-1/2">
-          <div className="grid h-14 w-14 place-items-center rounded-full bg-royal shadow-royal ring-2 ring-[--gold]/60">
-            <span className="font-script text-2xl text-[--gold]">A</span>
+        <div className="w-full max-w-md animate-fade-up text-center" style={{ color: "var(--cream)" }}>
+          {/* Medallion */}
+          <div className="mx-auto grid h-24 w-24 place-items-center rounded-full border border-[--gold]/70 bg-[--maroon-deep]/60 shadow-gold backdrop-blur-sm">
+            <span className="font-script text-5xl gold-text leading-none">A&amp;A</span>
           </div>
+
+          <p className="mt-6 font-display text-[10px] tracking-[0.6em] text-[--gold]">
+            WEDDING · INVITATION
+          </p>
+
+          <div className="mt-5 flex items-center justify-center gap-3">
+            <span className="h-px w-12 bg-[--gold]/60" />
+            <span className="text-[--gold]">✦</span>
+            <span className="h-px w-12 bg-[--gold]/60" />
+          </div>
+
+          <h1 className="mt-5 font-script text-5xl leading-tight text-[--cream] sm:text-6xl">
+            Adithya <span className="gold-text">&amp;</span> Akshay
+          </h1>
+
+          <p className="mx-auto mt-5 max-w-xs font-serif-body text-base italic leading-relaxed text-[--cream]/85">
+            With joy and gratitude, we invite you to celebrate our wedding ceremony.
+          </p>
+
+          <p className="mt-6 font-display text-[11px] tracking-[0.4em] text-[--gold-soft]">
+            22 · AUGUST · 2026
+          </p>
+
+          <button
+            type="button"
+            onClick={handleOpen}
+            className="group relative mt-8 inline-flex items-center gap-3 overflow-hidden rounded-full border border-[--gold] px-7 py-3 font-display text-[11px] uppercase tracking-[0.4em] text-[--gold] transition hover:bg-[--gold] hover:text-[--maroon-deep]"
+          >
+            <span>Open Invitation</span>
+            <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
+          </button>
+
+          <p className="mt-8 font-serif-body text-xs italic text-[--cream]/60">
+            tap to open the doors
+          </p>
         </div>
-
-        {/* Letter paper */}
-        <article
-          className="relative animate-fade-up overflow-hidden rounded-sm border border-[--gold]/50 shadow-royal"
-          style={{
-            background:
-              "linear-gradient(180deg, oklch(0.97 0.025 78) 0%, oklch(0.93 0.035 75) 100%)",
-          }}
-        >
-          {/* Paper texture lines */}
-          <div
-            className="pointer-events-none absolute inset-0 opacity-30"
-            style={{
-              backgroundImage:
-                "repeating-linear-gradient(0deg, transparent 0, transparent 27px, oklch(0.55 0.10 35 / 0.08) 28px)",
-            }}
-          />
-
-          {/* Decorative inner frame */}
-          <div className="relative m-3 border border-[--gold]/50 p-6 sm:m-4 sm:p-8">
-            {/* Corner ornaments */}
-            <span className="absolute -left-1.5 -top-1.5 h-3 w-3 border-l border-t border-[--gold]" />
-            <span className="absolute -right-1.5 -top-1.5 h-3 w-3 border-r border-t border-[--gold]" />
-            <span className="absolute -bottom-1.5 -left-1.5 h-3 w-3 border-b border-l border-[--gold]" />
-            <span className="absolute -bottom-1.5 -right-1.5 h-3 w-3 border-b border-r border-[--gold]" />
-
-            <div className="pt-4 text-center">
-              <img
-                src={lotus}
-                alt=""
-                aria-hidden
-                className="mx-auto h-10 w-auto opacity-90 sm:h-12"
-              />
-              <p className="mt-4 font-display text-[10px] uppercase tracking-[0.5em] text-[--henna]">
-                ~ A humble invitation ~
-              </p>
-            </div>
-
-            <div className="my-6 text-center">
-              <p className="font-serif-body text-sm italic text-[--henna]/80">
-                with the blessings of our families
-              </p>
-              <p className="mt-2 font-serif-body text-sm italic text-[--henna]/80">
-                we joyfully announce the wedding of
-              </p>
-            </div>
-
-            {/* Names */}
-            <div className="text-center">
-              <h1 className="font-script text-[3.5rem] leading-[0.9] text-maroon sm:text-7xl">
-                Adithya
-              </h1>
-              <div className="my-3 flex items-center justify-center gap-3">
-                <span className="h-px w-10 bg-[--gold] sm:w-14" />
-                <span className="font-display text-[10px] tracking-[0.45em] gold-text">
-                  WEDS
-                </span>
-                <span className="h-px w-10 bg-[--gold] sm:w-14" />
-              </div>
-              <h1 className="font-script text-[3.5rem] leading-[0.9] text-maroon sm:text-7xl">
-                Akshay
-              </h1>
-            </div>
-
-            {/* Date stamp */}
-            <div className="mx-auto mt-7 w-max rotate-[-2deg] border-2 border-dashed border-[--maroon]/40 px-4 py-2 text-center">
-              <p className="font-display text-[10px] tracking-[0.35em] text-maroon">
-                22 · AUG · 2026
-              </p>
-              <p className="mt-0.5 font-serif-body text-[11px] italic text-[--henna]">
-                Kannur, Kerala
-              </p>
-            </div>
-
-            {/* CTA */}
-            <div className="mt-8 flex justify-center">
-              <Link
-                to="/invitation"
-                onClick={() => setOpening(true)}
-                className="group relative inline-flex items-center gap-3 overflow-hidden rounded-sm bg-royal px-6 py-3 font-display text-[11px] uppercase tracking-[0.35em] shadow-royal transition hover:scale-[1.03] sm:px-8 sm:py-3.5"
-                style={{ color: "var(--cream)" }}
-              >
-                <span className="relative z-10">Open Invitation</span>
-                <span
-                  aria-hidden
-                  className="relative z-10 transition-transform group-hover:translate-x-1"
-                >
-                  →
-                </span>
-                <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[--gold]/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-              </Link>
-            </div>
-
-            <p className="mt-6 text-center font-serif-body text-[11px] italic text-[--henna]/70">
-              your presence is our blessing
-            </p>
-          </div>
-        </article>
-
-        {/* Shadow flap to hint envelope */}
-        <div
-          className="mx-auto mt-2 h-3 w-[92%] rounded-b-full bg-[--maroon-deep]/20 blur-md"
-          aria-hidden
-        />
       </div>
     </main>
+  );
+}
+
+function DoorOrnament({ side }: { side: "left" | "right" }) {
+  return (
+    <div className="pointer-events-none absolute inset-0">
+      {/* gold border inset */}
+      <div className="absolute inset-3 border border-[--gold]/30 sm:inset-5" />
+      <div className="absolute inset-5 border border-[--gold]/15 sm:inset-8" />
+      {/* arch top */}
+      <div
+        className="absolute left-1/2 top-8 h-24 w-24 -translate-x-1/2 rounded-full border border-[--gold]/40"
+        style={{ clipPath: "inset(50% 0 0 0)" }}
+      />
+      {/* handle */}
+      <div
+        className={`absolute top-1/2 -translate-y-1/2 ${
+          side === "left" ? "right-3" : "left-3"
+        } h-16 w-1.5 rounded-full bg-[--gold]/70 shadow-[0_0_10px_oklch(0.72_0.13_80/0.6)]`}
+      />
+      {/* center motif */}
+      <div
+        className={`absolute top-1/2 -translate-y-1/2 ${
+          side === "left" ? "right-10" : "left-10"
+        } hidden sm:block`}
+      >
+        <div className="grid h-14 w-14 place-items-center rounded-full border border-[--gold]/40">
+          <span className="font-script text-2xl text-[--gold]">
+            {side === "left" ? "A" : "A"}
+          </span>
+        </div>
+      </div>
+    </div>
   );
 }
