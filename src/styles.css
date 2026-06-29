@@ -151,5 +151,47 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: "Cormorant Garamond", serif;
+    background-image:
+      radial-gradient(circle at 10% 10%, oklch(0.72 0.13 80 / 0.10), transparent 40%),
+      radial-gradient(circle at 90% 80%, oklch(0.35 0.12 25 / 0.10), transparent 45%);
   }
+
+  .font-script { font-family: "Great Vibes", cursive; }
+  .font-display { font-family: "Cinzel", serif; letter-spacing: 0.08em; }
+  .font-serif-body { font-family: "Cormorant Garamond", serif; }
+
+  .bg-royal { background: var(--gradient-royal); }
+  .text-gold { color: var(--gold); }
+  .text-maroon { color: var(--maroon); }
+  .bg-maroon { background-color: var(--maroon); }
+  .bg-cream { background-color: var(--cream); }
+  .border-gold { border-color: var(--gold); }
+  .shadow-royal { box-shadow: var(--shadow-royal); }
+  .shadow-gold { box-shadow: var(--shadow-gold); }
+
+  .gold-text {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(2deg); }
+  }
+  .animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .animate-spin-slow { animation: spin-slow 60s linear infinite; }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-up { animation: fade-up 1s ease-out both; }
 }
