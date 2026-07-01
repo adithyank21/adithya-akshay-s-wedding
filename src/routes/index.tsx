@@ -113,28 +113,28 @@ function Index() {
             <span className="h-px w-12 bg-[--gold]/60" />
           </div>
 
-          <h1 className="mt-5 font-script text-5xl leading-tight text-[--cream] sm:text-6xl">
+          <h1 className="mt-6 font-script text-6xl leading-[1.05] text-[--cream] drop-shadow-[0_2px_10px_oklch(0_0_0/0.35)] sm:text-7xl">
             Adithya <span className="gold-text">&amp;</span> Akshay
           </h1>
 
-          <p className="mx-auto mt-5 max-w-xs font-serif-body text-base italic leading-relaxed text-[--cream]/85">
+          <p className="mx-auto mt-6 max-w-sm font-serif-body text-[17px] italic leading-[1.7] text-[--cream]/85">
             With joy and gratitude, we invite you to celebrate our wedding ceremony.
           </p>
 
-          <p className="mt-6 font-display text-[11px] tracking-[0.4em] text-[--gold-soft]">
+          <p className="mt-7 font-display text-[11px] tracking-[0.55em] text-[--gold-soft]">
             22 · AUGUST · 2026
           </p>
 
           <button
             type="button"
             onClick={handleOpen}
-            className="group relative mt-8 inline-flex items-center gap-3 overflow-hidden rounded-full border border-[--gold] px-7 py-3 font-display text-[11px] uppercase tracking-[0.4em] text-[--gold] transition hover:bg-[--gold] hover:text-[--maroon-deep]"
+            className="btn-gold group relative mt-9 inline-flex items-center gap-3 overflow-hidden rounded-full px-9 py-3.5 font-display text-[11px] uppercase tracking-[0.45em]"
           >
             <span>Open Invitation</span>
             <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
           </button>
 
-          <p className="mt-8 font-serif-body text-xs italic text-[--cream]/60">
+          <p className="mt-8 font-serif-body text-xs italic tracking-wide text-[--cream]/60">
             tap to open the doors
           </p>
         </div>
