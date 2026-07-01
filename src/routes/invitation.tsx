@@ -213,7 +213,7 @@ function Invitation() {
               badge="RECEPTION"
               title="Century  Convention Center"
               place="Manjery, Malappuram"
-              when="23 AUG 2026 · SUNDAY · 1:00 PM – 8:00 PM"
+              when="23 AUG 2026 · SUNDAY · 1:00 PM – 4:00 PM"
               blurb="An evening of music, feasting and joyful togetherness."
               mapQuery="Century Convention Center Manjery Malappuram"
             />
