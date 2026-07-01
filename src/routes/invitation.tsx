@@ -124,64 +124,64 @@ function Invitation() {
         </div>
 
         {/* HERO CARD */}
-        <section className="animate-fade-up rounded-lg border border-[--gold]/40 bg-[--maroon-deep]/50 px-6 py-12 text-center shadow-royal backdrop-blur-sm sm:px-12 sm:py-16">
+        <section className="animate-fade-up rounded-xl border border-[--gold]/40 bg-[--maroon-deep]/50 px-6 py-14 text-center shadow-royal backdrop-blur-sm transition duration-500 hover:border-[--gold]/70 sm:px-14 sm:py-20">
           <img src={lotus} alt="" aria-hidden className="mx-auto h-12 w-auto" />
-          <p className="mt-5 font-display text-[10px] tracking-[0.55em] text-[--gold]">
+          <p className="mt-6 font-display text-[10px] tracking-[0.6em] text-[--gold]">
             WEDDING · INVITATION
           </p>
 
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:items-baseline sm:justify-center sm:gap-6">
+          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:items-baseline sm:justify-center sm:gap-8">
             <div className="text-center">
-              <h1 className="font-script text-5xl text-[--cream] sm:text-6xl">Adithya N K</h1>
-              <p className="mt-1 font-serif-body text-xs italic text-[--gold-soft]">
+              <h1 className="font-script text-6xl leading-[1.05] text-[--cream] drop-shadow-[0_2px_10px_oklch(0_0_0/0.3)] sm:text-7xl">Adithya N K</h1>
+              <p className="mt-2 font-serif-body text-[13px] italic tracking-wide text-[--gold-soft]">
                 D/O V P Damodaran &amp; Rema N K
               </p>
             </div>
-            <p className="font-script text-4xl gold-text sm:text-5xl">&amp;</p>
+            <p className="font-script text-5xl gold-text sm:text-6xl">&amp;</p>
             <div className="text-center">
-              <h1 className="font-script text-5xl text-[--cream] sm:text-6xl">Akshay M</h1>
-              <p className="mt-1 font-serif-body text-xs italic text-[--gold-soft]">
+              <h1 className="font-script text-6xl leading-[1.05] text-[--cream] drop-shadow-[0_2px_10px_oklch(0_0_0/0.3)] sm:text-7xl">Akshay M</h1>
+              <p className="mt-2 font-serif-body text-[13px] italic tracking-wide text-[--gold-soft]">
                 S/O Sunil Kumar M &amp; Sheeja T K
               </p>
             </div>
           </div>
 
-          <div className="mt-8 flex items-center justify-center gap-3">
+          <div className="mt-10 flex items-center justify-center gap-3">
             <span className="h-px w-16 bg-[--gold]/50" />
             <span className="text-[--gold]">✦</span>
             <span className="h-px w-16 bg-[--gold]/50" />
           </div>
 
-          <p className="mt-6 font-display text-xs tracking-[0.4em] text-[--cream]">
+          <p className="mt-7 font-display text-xs tracking-[0.5em] text-[--cream]">
             22 · AUGUST · 2026  ·  KANNUR
           </p>
         </section>
 
         {/* BANNER */}
-        <section className="mt-10 grid items-center gap-6 rounded-lg border border-[--gold]/30 bg-[--maroon-deep]/40 p-5 backdrop-blur-sm sm:grid-cols-2 sm:p-7">
-          <div className="overflow-hidden rounded-md ring-1 ring-[--gold]/40">
+        <section className="mt-12 grid items-center gap-7 rounded-xl border border-[--gold]/30 bg-[--maroon-deep]/40 p-6 backdrop-blur-sm transition duration-500 hover:border-[--gold]/60 sm:grid-cols-2 sm:p-8">
+          <div className="overflow-hidden rounded-lg ring-1 ring-[--gold]/40">
             <img
               src={wedding1.url}
               alt="Adithya & Akshay"
-              className="aspect-[4/5] w-full object-cover transition duration-700 hover:scale-105"
+              className="aspect-[4/5] w-full object-cover transition duration-[900ms] ease-out hover:scale-[1.06]"
             />
           </div>
           <div className="text-center sm:text-left">
-            <p className="font-script text-3xl gold-text leading-snug sm:text-4xl">
+            <p className="font-script text-4xl gold-text leading-[1.15] sm:text-[2.75rem]">
               “Two hearts, one promise, and a lifetime of beautiful beginnings.”
             </p>
-            <h2 className="mt-5 font-serif-body text-lg italic text-[--cream]/90 sm:text-xl">
+            <h2 className="mt-6 font-serif-body text-lg italic leading-relaxed text-[--cream]/90 sm:text-xl">
               Celebrate love, tradition, and togetherness with us.
             </h2>
           </div>
         </section>
 
         {/* COUNTDOWN */}
-        <section className="mt-10 text-center">
-          <p className="font-display text-[10px] tracking-[0.45em] text-[--gold]">
+        <section className="mt-14 text-center">
+          <p className="font-display text-[10px] tracking-[0.55em] text-[--gold]">
             COUNTDOWN TO THE MUHURTHAM
           </p>
-          <div className="mx-auto mt-5 grid max-w-md grid-cols-4 gap-3">
+          <div className="mx-auto mt-6 grid max-w-md grid-cols-4 gap-3">
             <CountBox n={d} label="DAYS" />
             <CountBox n={h} label="HOURS" />
             <CountBox n={m} label="MINUTES" />
@@ -190,17 +190,17 @@ function Invitation() {
         </section>
 
         {/* VENUES */}
-        <section className="mt-12">
-          <div className="mb-6 text-center">
-            <p className="font-display text-[10px] tracking-[0.45em] text-[--gold]">
+        <section className="mt-16">
+          <div className="mb-8 text-center">
+            <p className="font-display text-[10px] tracking-[0.55em] text-[--gold]">
               WHERE TO ARRIVE
             </p>
-            <h3 className="mt-3 font-script text-3xl text-[--cream] sm:text-4xl">
+            <h3 className="mt-4 font-script text-4xl leading-tight text-[--cream] sm:text-5xl">
               Both venues are ready to welcome you.
             </h3>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="grid gap-6 sm:grid-cols-2">
             <VenueCard
               badge="CEREMONY"
               title="Meenkulam Sreekrishna Temple"
@@ -221,19 +221,19 @@ function Invitation() {
         </section>
 
         {/* CLOSING */}
-        <section className="mt-12 text-center">
+        <section className="mt-16 text-center">
           <img
             src={wedding2.url}
             alt=""
             aria-hidden
-            className="mx-auto mb-6 h-28 w-28 rounded-full object-cover ring-2 ring-[--gold]/50"
+            className="mx-auto mb-7 h-28 w-28 rounded-full object-cover ring-2 ring-[--gold]/50 shadow-gold"
           />
-          <p className="mx-auto max-w-xl font-serif-body text-base italic leading-relaxed text-[--cream]/85 sm:text-lg">
+          <p className="mx-auto max-w-xl font-serif-body text-[17px] italic leading-[1.8] text-[--cream]/85 sm:text-lg">
             Together with our families, we request the honour of your presence
             as we begin this beautiful journey of love.
           </p>
-          <p className="mt-5 font-script text-4xl gold-text">Adithya &amp; Akshay</p>
-          <p className="mt-3 font-display text-[10px] tracking-[0.45em] text-[--gold-soft]">
+          <p className="mt-6 font-script text-5xl gold-text">Adithya &amp; Akshay</p>
+          <p className="mt-4 font-display text-[10px] tracking-[0.55em] text-[--gold-soft]">
             WITH LOVE FROM KANNUR · 2026
           </p>
         </section>
