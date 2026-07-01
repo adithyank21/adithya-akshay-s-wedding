@@ -157,12 +157,11 @@
       radial-gradient(circle at 90% 80%, oklch(0.35 0.12 25 / 0.10), transparent 45%);
   }
 
-  .font-script { font-family: "Great Vibes", cursive; }
+  .font-script { font-family: "Great Vibes", cursive; line-height: 1.05; }
   .font-display { font-family: "Cinzel", serif; letter-spacing: 0.14em; font-feature-settings: "liga","dlig"; }
   .font-serif-body { font-family: "Cormorant Garamond", serif; font-feature-settings: "liga","dlig"; }
   .font-heading { font-family: "Playfair Display", serif; letter-spacing: -0.005em; }
 
-  .font-script { line-height: 1.05; }
   body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 
   .bg-royal { background: var(--gradient-royal); }
