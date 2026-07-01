@@ -211,11 +211,11 @@ function Invitation() {
             />
             <VenueCard
               badge="RECEPTION"
-              title="Century Auditorium"
+              title="Century  Convention Center"
               place="Manjery, Malappuram"
-              when="23 AUG 2026 · SUNDAY · 4:00 – 8:00 PM"
+              when="23 AUG 2026 · SUNDAY · 1:00 PM – 8:00 PM"
               blurb="An evening of music, feasting and joyful togetherness."
-              mapQuery="Century Auditorium Manjery Malappuram"
+              mapQuery="Century Convention Center Manjery Malappuram"
             />
           </div>
         </section>
