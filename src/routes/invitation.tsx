@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import wedding1 from "@/assets/wedding-1.jpeg.asset.json";
 import wedding2 from "@/assets/wedding-2.jpeg.asset.json";
+import wedding3 from "@/assets/wedding-3.jpeg";
+import wedding4 from "@/assets/wedding-4.jpeg";
 import mandala from "@/assets/mandala.png";
 import lotus from "@/assets/lotus.png";
 import { MusicToggle } from "@/components/MusicToggle";
@@ -114,16 +116,6 @@ function Invitation() {
       />
 
       <div className="relative mx-auto w-full max-w-3xl px-4 pb-16 pt-8 sm:px-6 sm:pt-12">
-        {/* Back link */}
-        <div className="mb-6 flex justify-center">
-          <Link
-            to="/"
-            className="font-display text-[10px] uppercase tracking-[0.4em] text-[--gold]/80 transition hover:text-[--gold]"
-          >
-            ← back to cover
-          </Link>
-        </div>
-
         {/* HERO CARD */}
         <section className="animate-fade-up rounded-xl border border-[--gold]/40 bg-[--maroon-deep]/50 px-6 py-14 text-center shadow-royal backdrop-blur-sm transition duration-500 hover:border-[--gold]/70 sm:px-14 sm:py-20">
           <img src={lotus} alt="" aria-hidden className="mx-auto h-12 w-auto" />
@@ -162,7 +154,7 @@ function Invitation() {
         <section className="mt-12 grid items-center gap-7 rounded-xl border border-[--gold]/30 bg-[--maroon-deep]/40 p-6 backdrop-blur-sm transition duration-500 hover:border-[--gold]/60 sm:grid-cols-2 sm:p-8">
           <div className="overflow-hidden rounded-lg ring-1 ring-[--gold]/40">
             <img
-              src={wedding1.url}
+              src={wedding3}
               alt="Adithya & Akshay"
               className="aspect-[4/5] w-full object-cover transition duration-[900ms] ease-out hover:scale-[1.06]"
             />
@@ -190,7 +182,7 @@ function Invitation() {
           </div>
         </section>
 
-        {/* VENUES */}
+        {/* PHOTO GALLERY */}
         <section className="mt-16">
           <div className="mb-8 text-center">
             <p className="font-display text-[10px] tracking-[0.55em] text-[--gold]">
@@ -224,7 +216,7 @@ function Invitation() {
         {/* CLOSING */}
         <section className="mt-16 text-center">
           <img
-            src={wedding2.url}
+            src={wedding4}
             alt=""
             aria-hidden
             className="mx-auto mb-7 h-28 w-28 rounded-full object-cover ring-2 ring-[--gold]/50 shadow-gold"

@@ -138,10 +138,6 @@ function Index() {
             <span>Open Invitation</span>
             <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
           </button>
-
-          <p className="mt-8 font-serif-body text-xs italic tracking-wide text-[--cream]/60">
-            tap to open the doors
-          </p>
         </div>
       </div>
     </main>
