@@ -1,6 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
-import wedding1 from "@/assets/wedding-1.jpeg.asset.json";
 import mandala from "@/assets/mandala.png";
 import lotus from "@/assets/lotus.png";
 import { MusicToggle } from "@/components/MusicToggle";
@@ -19,7 +18,6 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content: "With the blessings of our families — 22 Aug 2026, Kannur.",
       },
-      { property: "og:image", content: wedding1.url },
       { property: "og:type", content: "website" },
     ],
   }),
@@ -37,15 +35,22 @@ function Index() {
   };
 
   return (
-    <main className="relative min-h-[100svh] overflow-hidden bg-[--maroon-deep]">
+    <main
+      className="relative min-h-[100svh] overflow-hidden bg-[--maroon-deep]"
+      style={{
+        backgroundImage:
+          "linear-gradient(135deg, oklch(0.22 0.10 25 / 0.96) 0%, oklch(0.31 0.12 27 / 0.96) 100%), radial-gradient(circle at 15% 20%, oklch(0.72 0.13 80 / 0.16), transparent 24%), radial-gradient(circle at 85% 80%, oklch(0.24 0.05 20 / 0.22), transparent 32%)",
+      }}
+    >
       <MusicToggle />
 
-      {/* Backdrop image faint */}
-      <img
-        src={wedding1.url}
-        alt=""
+      <div
         aria-hidden
-        className="absolute inset-0 h-full w-full object-cover opacity-15"
+        className="pointer-events-none absolute inset-0 opacity-20"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at center, oklch(0.96 0.025 75 / 0.12) 0%, transparent 54%)",
+        }}
       />
       <img
         src={mandala}

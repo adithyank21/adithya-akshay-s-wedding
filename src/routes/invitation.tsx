@@ -67,7 +67,7 @@ function VenueCard({
       <p className="mt-5 font-display text-[10px] tracking-[0.4em] text-[--cream]">{when}</p>
       <p className="mt-5 font-serif-body text-[15px] leading-[1.75] text-[--cream]/80">{blurb}</p>
       <a
-        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`}
+        href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(mapQuery)}&travelmode=driving`}
         target="_blank"
         rel="noreferrer"
         className="mt-auto pt-6 inline-flex items-center gap-2 self-start font-display text-[10px] uppercase tracking-[0.4em] text-[--gold] transition hover:text-[--gold-soft]"
