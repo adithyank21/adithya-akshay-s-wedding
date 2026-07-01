@@ -58,11 +58,11 @@ function VenueCard({
   mapQuery: string;
 }) {
   return (
-    <div className="group relative overflow-hidden rounded-md border border-[--gold]/40 bg-[--maroon-deep]/70 p-6 backdrop-blur-sm transition hover:border-[--gold]">
+    <div className="group relative flex h-full flex-col overflow-hidden rounded-md border border-[--gold]/40 bg-[--maroon-deep]/70 p-6 backdrop-blur-sm transition hover:border-[--gold]">
       <span className="absolute right-4 top-4 font-display text-[9px] uppercase tracking-[0.35em] text-[--gold]">
         {badge}
       </span>
-      <h3 className="mt-6 font-script text-3xl text-[--cream]">{title}</h3>
+      <h3 className="mt-6 font-script text-[28px] leading-tight text-[--cream] min-h-[4.5rem] flex items-end">{title}</h3>
       <p className="mt-2 font-serif-body text-sm italic text-[--gold-soft]">{place}</p>
       <p className="mt-4 font-display text-[10px] tracking-[0.3em] text-[--cream]">{when}</p>
       <p className="mt-4 font-serif-body text-sm leading-relaxed text-[--cream]/80">{blurb}</p>
@@ -70,9 +70,9 @@ function VenueCard({
         href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`}
         target="_blank"
         rel="noreferrer"
-        className="mt-5 inline-flex items-center gap-2 border-b border-[--gold]/60 pb-0.5 font-display text-[10px] uppercase tracking-[0.3em] text-[--gold] transition hover:text-[--gold-soft]"
+        className="mt-auto pt-5 inline-flex items-center gap-2 self-start font-display text-[10px] uppercase tracking-[0.3em] text-[--gold] transition hover:text-[--gold-soft]"
       >
-        Get directions <span aria-hidden>↗</span>
+        <span className="border-b border-[--gold]/60 pb-0.5">Get directions</span> <span aria-hidden>↗</span>
       </a>
     </div>
   );
