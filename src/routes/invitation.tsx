@@ -58,21 +58,22 @@ function VenueCard({
   mapQuery: string;
 }) {
   return (
-    <div className="group relative flex h-full flex-col overflow-hidden rounded-md border border-[--gold]/40 bg-[--maroon-deep]/70 p-6 backdrop-blur-sm transition hover:border-[--gold]">
-      <span className="absolute right-4 top-4 font-display text-[9px] uppercase tracking-[0.35em] text-[--gold]">
+    <div className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-[--gold]/40 bg-[--maroon-deep]/70 p-7 backdrop-blur-sm transition duration-500 hover:-translate-y-0.5 hover:border-[--gold] hover:shadow-[0_20px_50px_-20px_oklch(0.72_0.13_80/0.35)]">
+      <span className="absolute right-5 top-5 font-display text-[9px] uppercase tracking-[0.45em] text-[--gold]">
         {badge}
       </span>
-      <h3 className="mt-6 font-script text-[28px] leading-tight text-[--cream] min-h-[4.5rem] flex items-end">{title}</h3>
-      <p className="mt-2 font-serif-body text-sm italic text-[--gold-soft]">{place}</p>
-      <p className="mt-4 font-display text-[10px] tracking-[0.3em] text-[--cream]">{when}</p>
-      <p className="mt-4 font-serif-body text-sm leading-relaxed text-[--cream]/80">{blurb}</p>
+      <h3 className="mt-8 font-script text-[32px] leading-[1.1] text-[--cream] min-h-[5rem] flex items-end">{title}</h3>
+      <p className="mt-3 font-serif-body text-[15px] italic tracking-wide text-[--gold-soft]">{place}</p>
+      <p className="mt-5 font-display text-[10px] tracking-[0.4em] text-[--cream]">{when}</p>
+      <p className="mt-5 font-serif-body text-[15px] leading-[1.75] text-[--cream]/80">{blurb}</p>
       <a
         href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`}
         target="_blank"
         rel="noreferrer"
-        className="mt-auto pt-5 inline-flex items-center gap-2 self-start font-display text-[10px] uppercase tracking-[0.3em] text-[--gold] transition hover:text-[--gold-soft]"
+        className="mt-auto pt-6 inline-flex items-center gap-2 self-start font-display text-[10px] uppercase tracking-[0.4em] text-[--gold] transition hover:text-[--gold-soft]"
       >
-        <span className="border-b border-[--gold]/60 pb-0.5">Get directions</span> <span aria-hidden>↗</span>
+        <span className="border-b border-[--gold]/60 pb-0.5 transition group-hover:border-[--gold]">Get directions</span>
+        <span aria-hidden className="transition-transform group-hover:translate-x-0.5">↗</span>
       </a>
     </div>
   );
@@ -80,11 +81,11 @@ function VenueCard({
 
 function CountBox({ n, label }: { n: number; label: string }) {
   return (
-    <div className="flex flex-col items-center rounded-md border border-[--gold]/40 bg-[--maroon-deep]/50 px-3 py-4 backdrop-blur-sm">
-      <span className="font-display text-2xl text-[--gold] tabular-nums sm:text-3xl">
+    <div className="flex flex-col items-center rounded-lg border border-[--gold]/40 bg-[--maroon-deep]/50 px-3 py-5 backdrop-blur-sm transition duration-500 hover:border-[--gold]/80">
+      <span className="font-display text-3xl text-[--gold] tabular-nums sm:text-[2rem]">
         {String(n).padStart(2, "0")}
       </span>
-      <span className="mt-1 font-display text-[9px] tracking-[0.3em] text-[--cream]/70">
+      <span className="mt-2 font-display text-[9px] tracking-[0.4em] text-[--cream]/70">
         {label}
       </span>
     </div>
