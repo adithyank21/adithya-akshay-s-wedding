@@ -31,6 +31,12 @@ function Index() {
   const handleOpen = () => {
     if (opening) return;
     setOpening(true);
+    // start music on user click (user gesture allows play)
+    try {
+      window.weddingMusicControl?.play?.();
+    } catch (e) {
+      console.warn("Music play failed:", e);
+    }
     setTimeout(() => navigate({ to: "/invitation" }), 1400);
   };
 
@@ -39,7 +45,7 @@ function Index() {
       className="relative min-h-[100svh] overflow-hidden bg-[--maroon-deep]"
       style={{
         backgroundImage:
-          "linear-gradient(135deg, oklch(0.22 0.10 25 / 0.96) 0%, oklch(0.31 0.12 27 / 0.96) 100%), radial-gradient(circle at 15% 20%, oklch(0.72 0.13 80 / 0.16), transparent 24%), radial-gradient(circle at 85% 80%, oklch(0.24 0.05 20 / 0.22), transparent 32%)",
+          "linear-gradient(135deg, oklch(0.22 0.10 25 / 0.96) 0%, oklch(0.31 0.12 27 / 0.96) 100%), radial-gradient(circle at 15% 20%, oklch(0.72 0.13 80 / 0.16), transparent 24%), radial-gradient[...],",
       }}
     >
       <MusicToggle />
