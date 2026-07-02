@@ -10,26 +10,28 @@ import lotus from "@/assets/lotus.png";
 export const Route = createFileRoute("/invitation")({
   head: () => ({
     meta: [
-      { title: "The Invitation — Adithya & Akshay" },
+      { title: "Adithya ❤️ Akshay | Wedding Invitation" },
       {
         name: "description",
         content:
-          "Wedding on 22 Aug 2026 at Meenkulam Sreekrishna Temple, Kannur. Reception on 23 Aug at Century Auditorium, Manjery.",
+          "Two hearts...❤️ One journey...☺️ A lifetime of love begins here 🤗",
       },
-      { property: "og:title", content: "The Invitation — Adithya & Akshay" },
+      { property: "og:title", content: "Adithya ❤️ Akshay | Wedding Invitation" },
       {
         property: "og:description",
         content:
-          "Join us for the wedding ceremony on 22 August and reception on 23 August 2026. Celebrate love, tradition, and family in Kannur.",
+          "Two hearts...❤️ One journey...☺️ A lifetime of love begins here 🤗",
       },
+      { property: "og:site_name", content: "adithya-akshay-s-wedding.vercel.app" },
       { property: "og:image", content: wedding2.url },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "The Invitation — Adithya & Akshay" },
+      { name: "twitter:title", content: "Adithya ❤️ Akshay | Wedding Invitation" },
       {
         name: "twitter:description",
         content:
-          "Join us for the wedding ceremony on 22 August and reception on 23 August 2026. Celebrate love, tradition, and family in Kannur.",
+          "Two hearts...❤️ One journey...☺️ A lifetime of love begins here 🤗",
       },
+      { name: "twitter:site", content: "@adithya_akshay" },
       { name: "twitter:image", content: wedding2.url },
     ],
   }),

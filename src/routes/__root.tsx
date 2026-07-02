@@ -78,27 +78,29 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Adithya weds Akshay — 22 Aug 2026" },
+      { title: "Adithya ❤️ Akshay | Wedding Invitation" },
       {
         name: "description",
         content:
-          "A heartfelt wedding invitation for Adithya and Akshay in Kannur on 22 August 2026.",
+          "Two hearts...❤️ One journey...☺️ A lifetime of love begins here 🤗",
       },
       { name: "author", content: "Adithya & Akshay" },
-      { property: "og:title", content: "Adithya weds Akshay — 22 Aug 2026" },
+      { property: "og:title", content: "Adithya ❤️ Akshay | Wedding Invitation" },
       {
         property: "og:description",
         content:
-          "A heartfelt wedding invitation for Adithya and Akshay in Kannur on 22 August 2026.",
+          "Two hearts...❤️ One journey...☺️ A lifetime of love begins here 🤗",
       },
+      { property: "og:site_name", content: "adithya-akshay-s-wedding.vercel.app" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Adithya weds Akshay — 22 Aug 2026" },
+      { name: "twitter:title", content: "Adithya ❤️ Akshay | Wedding Invitation" },
       {
         name: "twitter:description",
         content:
-          "A heartfelt wedding invitation for Adithya and Akshay in Kannur on 22 August 2026.",
+          "Two hearts...❤️ One journey...☺️ A lifetime of love begins here 🤗",
       },
+      { name: "twitter:site", content: "@adithya_akshay" },
     ],
     links: [
       {

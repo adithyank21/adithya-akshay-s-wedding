@@ -6,26 +6,28 @@ import lotus from "@/assets/lotus.png";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Adithya weds Akshay — 22 Aug 2026" },
+      { title: "Adithya ❤️ Akshay | Wedding Invitation" },
       {
         name: "description",
         content:
-          "A heartfelt invitation to the wedding of Adithya & Akshay — 22 August 2026, Kannur.",
+          "Two hearts...❤️ One journey...☺️ A lifetime of love begins here 🤗",
       },
-      { property: "og:title", content: "Adithya weds Akshay — 22 Aug 2026" },
+      { property: "og:title", content: "Adithya ❤️ Akshay | Wedding Invitation" },
       {
         property: "og:description",
         content:
-          "Celebrate the wedding of Adithya & Akshay in Kannur on 22 August 2026. Join us for an evening of love, tradition, and joyful togetherness.",
+          "Two hearts...❤️ One journey...☺️ A lifetime of love begins here 🤗",
       },
+      { property: "og:site_name", content: "adithya-akshay-s-wedding.vercel.app" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Adithya weds Akshay — 22 Aug 2026" },
+      { name: "twitter:title", content: "Adithya ❤️ Akshay | Wedding Invitation" },
       {
         name: "twitter:description",
         content:
-          "Celebrate the wedding of Adithya & Akshay in Kannur on 22 August 2026. Join us for an evening of love, tradition, and joyful togetherness.",
+          "Two hearts...❤️ One journey...☺️ A lifetime of love begins here 🤗",
       },
+      { name: "twitter:site", content: "@adithya_akshay" },
     ],
   }),
   component: Index,
