@@ -7,6 +7,10 @@ import wedding4 from "@/assets/wedding-4.jpeg";
 import mandala from "@/assets/mandala.png";
 import lotus from "@/assets/lotus.png";
 
+const SITE_URL = "https://adithya-akshay-s-wedding.vercel.app";
+const INVITATION_URL = `${SITE_URL}/invitation`;
+const INVITATION_IMAGE_URL = new URL(wedding2.url, SITE_URL).href;
+
 export const Route = createFileRoute("/invitation")({
   head: () => ({
     meta: [
@@ -22,8 +26,11 @@ export const Route = createFileRoute("/invitation")({
         content:
           "Two hearts...❤️ One journey...☺️ A lifetime of love begins here 🤗",
       },
+      { property: "og:url", content: INVITATION_URL },
       { property: "og:site_name", content: "adithya-akshay-s-wedding.vercel.app" },
-      { property: "og:image", content: wedding2.url },
+      { property: "og:type", content: "website" },
+      { property: "og:image", content: INVITATION_IMAGE_URL },
+      { property: "og:image:alt", content: "Adithya and Akshay wedding invitation" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Adithya ❤️ Akshay | Wedding Invitation" },
       {
@@ -31,8 +38,9 @@ export const Route = createFileRoute("/invitation")({
         content:
           "Two hearts...❤️ One journey...☺️ A lifetime of love begins here 🤗",
       },
+      { name: "twitter:url", content: INVITATION_URL },
+      { name: "twitter:image", content: INVITATION_IMAGE_URL },
       { name: "twitter:site", content: "@adithya_akshay" },
-      { name: "twitter:image", content: wedding2.url },
     ],
   }),
   component: Invitation,

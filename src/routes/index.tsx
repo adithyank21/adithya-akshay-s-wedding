@@ -2,6 +2,11 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import mandala from "@/assets/mandala.png";
 import lotus from "@/assets/lotus.png";
+import wedding2 from "@/assets/wedding-2.jpeg.asset.json";
+
+const SITE_URL = "https://adithya-akshay-s-wedding.vercel.app";
+const HOME_URL = `${SITE_URL}/`;
+const HOME_IMAGE_URL = new URL(wedding2.url, SITE_URL).href;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -18,8 +23,11 @@ export const Route = createFileRoute("/")({
         content:
           "Two hearts...❤️ One journey...☺️ A lifetime of love begins here 🤗",
       },
+      { property: "og:url", content: HOME_URL },
       { property: "og:site_name", content: "adithya-akshay-s-wedding.vercel.app" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: HOME_IMAGE_URL },
+      { property: "og:image:alt", content: "Adithya and Akshay wedding invitation" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Adithya ❤️ Akshay | Wedding Invitation" },
       {
@@ -27,6 +35,8 @@ export const Route = createFileRoute("/")({
         content:
           "Two hearts...❤️ One journey...☺️ A lifetime of love begins here 🤗",
       },
+      { name: "twitter:url", content: HOME_URL },
+      { name: "twitter:image", content: HOME_IMAGE_URL },
       { name: "twitter:site", content: "@adithya_akshay" },
     ],
   }),
