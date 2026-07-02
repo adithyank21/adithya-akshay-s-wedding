@@ -1,77 +1,91 @@
 import { useRef, useState, useEffect } from "react";
+import weddingMusic from "@/assets/wedding-music.mp3";
 
-// Expose a simple controller on window so other parts of the app (the Open Invitation
-// button) can trigger play/pause. We keep the same iframe-based YouTube approach
-// (enablejsapi=1) and send postMessage commands like the existing toggle did.
+// Use a local Audio element instead of the YouTube iframe. This is more reliable
+// for autoplay on a user gesture and avoids postMessage/player-ready race issues.
 
 declare global {
   interface Window {
     weddingMusicControl?: {
-      play?: () => void;
+      play?: () => Promise<void> | void;
       pause?: () => void;
-      toggle?: () => void;
+      toggle?: () => Promise<void> | void;
       isPlaying?: () => boolean;
     };
   }
 }
 
 export function MusicToggle() {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
 
-  const sendCommand = (command: string) => {
-    const iframe = iframeRef.current;
-    if (!iframe) return;
-    iframe.contentWindow?.postMessage(
-      JSON.stringify({ event: "command", func: command, args: [] }),
-      "*",
-    );
-  };
-
-  const play = () => {
-    sendCommand("playVideo");
-    setPlaying(true);
-  };
-  const pause = () => {
-    sendCommand("pauseVideo");
-    setPlaying(false);
-  };
-  const toggle = () => {
-    if (playing) pause();
-    else play();
-  };
-
-  // Expose controller on window so other files can call window.weddingMusicControl.play()
   useEffect(() => {
+    const audio = new Audio(weddingMusic);
+    audio.loop = true;
+    audio.preload = "auto";
+    audio.volume = 0.7;
+    audioRef.current = audio;
+
+    const onPlay = () => setPlaying(true);
+    const onPause = () => setPlaying(false);
+
+    audio.addEventListener("play", onPlay);
+    audio.addEventListener("pause", onPause);
+
+    // Expose controller
     window.weddingMusicControl = {
-      play,
-      pause,
-      toggle,
-      isPlaying: () => playing,
+      play: async () => {
+        try {
+          await audio.play();
+        } catch (e) {
+          // play may reject if not a user gesture; caller should handle UI fallback
+          console.warn("Audio play rejected:", e);
+        }
+      },
+      pause: () => audio.pause(),
+      toggle: async () => {
+        if (audio.paused) {
+          try {
+            await audio.play();
+          } catch (e) {
+            console.warn("Audio play rejected:", e);
+          }
+        } else {
+          audio.pause();
+        }
+      },
+      isPlaying: () => !audio.paused,
     };
+
     return () => {
-      // only remove if it's our controller
-      if (window.weddingMusicControl?.isPlaying === (() => playing)) {
-        delete window.weddingMusicControl;
-      } else if (window.weddingMusicControl && window.weddingMusicControl.isPlaying) {
-        // best-effort: don't clobber other controllers
-        delete window.weddingMusicControl;
-      }
+      audio.pause();
+      audio.removeEventListener("play", onPlay);
+      audio.removeEventListener("pause", onPause);
+      if (window.weddingMusicControl) delete window.weddingMusicControl;
+      audioRef.current = null;
     };
-  }, [playing]);
+  }, []);
+
+  const handleToggle = async () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (audio.paused) {
+      try {
+        await audio.play();
+      } catch (e) {
+        console.warn("Play failed:", e);
+      }
+    } else {
+      audio.pause();
+    }
+  };
 
   return (
     <>
-      <iframe
-        ref={iframeRef}
-        title="Radha Rahasya"
-        src="https://www.youtube.com/embed/cVZ_57VWnXc?enablejsapi=1&autoplay=0&loop=1&playlist=cVZ_57VWnXc"
-        allow="autoplay; encrypted-media"
-        className="hidden"
-      />
+      {/* keep the floating UI the same */}
       <button
-        onClick={toggle}
-        aria-label={playing ? "Pause music" : "Play Radha Rahasya"}
+        onClick={handleToggle}
+        aria-label={playing ? "Pause music" : "Play music"}
         className="fixed bottom-4 right-4 z-50 flex items-center gap-2 rounded-full bg-royal px-3.5 py-2 shadow-royal transition hover:scale-105 sm:bottom-6 sm:right-6 sm:px-4 sm:py-2.5"
         style={{ color: "var(--cream)" }}
       >
