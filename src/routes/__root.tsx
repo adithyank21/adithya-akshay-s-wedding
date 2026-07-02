@@ -78,14 +78,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Adithya weds Akshay — 22 Aug 2026" },
+      {
+        name: "description",
+        content:
+          "A heartfelt wedding invitation for Adithya and Akshay in Kannur on 22 August 2026.",
+      },
+      { name: "author", content: "Adithya & Akshay" },
+      { property: "og:title", content: "Adithya weds Akshay — 22 Aug 2026" },
+      {
+        property: "og:description",
+        content:
+          "A heartfelt wedding invitation for Adithya and Akshay in Kannur on 22 August 2026.",
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Adithya weds Akshay — 22 Aug 2026" },
+      {
+        name: "twitter:description",
+        content:
+          "A heartfelt wedding invitation for Adithya and Akshay in Kannur on 22 August 2026.",
+      },
     ],
     links: [
       {

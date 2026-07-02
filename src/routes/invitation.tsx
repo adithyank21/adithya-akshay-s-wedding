@@ -19,9 +19,18 @@ export const Route = createFileRoute("/invitation")({
       { property: "og:title", content: "The Invitation — Adithya & Akshay" },
       {
         property: "og:description",
-        content: "Join us for the wedding and reception of Adithya & Akshay.",
+        content:
+          "Join us for the wedding ceremony on 22 August and reception on 23 August 2026. Celebrate love, tradition, and family in Kannur.",
       },
       { property: "og:image", content: wedding2.url },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "The Invitation — Adithya & Akshay" },
+      {
+        name: "twitter:description",
+        content:
+          "Join us for the wedding ceremony on 22 August and reception on 23 August 2026. Celebrate love, tradition, and family in Kannur.",
+      },
+      { name: "twitter:image", content: wedding2.url },
     ],
   }),
   component: Invitation,

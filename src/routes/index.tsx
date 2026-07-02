@@ -12,12 +12,20 @@ export const Route = createFileRoute("/")({
         content:
           "A heartfelt invitation to the wedding of Adithya & Akshay — 22 August 2026, Kannur.",
       },
-      { property: "og:title", content: "Adithya weds Akshay" },
+      { property: "og:title", content: "Adithya weds Akshay — 22 Aug 2026" },
       {
         property: "og:description",
-        content: "With the blessings of our families — 22 Aug 2026, Kannur.",
+        content:
+          "Celebrate the wedding of Adithya & Akshay in Kannur on 22 August 2026. Join us for an evening of love, tradition, and joyful togetherness.",
       },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Adithya weds Akshay — 22 Aug 2026" },
+      {
+        name: "twitter:description",
+        content:
+          "Celebrate the wedding of Adithya & Akshay in Kannur on 22 August 2026. Join us for an evening of love, tradition, and joyful togetherness.",
+      },
     ],
   }),
   component: Index,
