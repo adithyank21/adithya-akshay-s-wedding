@@ -2,7 +2,6 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import mandala from "@/assets/mandala.png";
 import lotus from "@/assets/lotus.png";
-import { MusicToggle } from "@/components/MusicToggle";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -48,8 +47,6 @@ function Index() {
           "linear-gradient(135deg, oklch(0.22 0.10 25 / 0.96) 0%, oklch(0.31 0.12 27 / 0.96) 100%), radial-gradient(circle at 15% 20%, oklch(0.72 0.13 80 / 0.16), transparent 24%), radial-gradient[...],",
       }}
     >
-      <MusicToggle />
-
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-20"

@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { MusicToggle } from "../components/MusicToggle";
 
 function NotFoundComponent() {
   return (
@@ -115,9 +116,12 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+  const showMusicButton = router.state.location.pathname !== "/";
 
   return (
     <QueryClientProvider client={queryClient}>
+      <MusicToggle showButton={showMusicButton} />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
     </QueryClientProvider>

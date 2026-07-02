@@ -6,7 +6,6 @@ import wedding3 from "@/assets/wedding-3.jpeg";
 import wedding4 from "@/assets/wedding-4.jpeg";
 import mandala from "@/assets/mandala.png";
 import lotus from "@/assets/lotus.png";
-import { MusicToggle } from "@/components/MusicToggle";
 
 export const Route = createFileRoute("/invitation")({
   head: () => ({
@@ -106,8 +105,6 @@ function Invitation() {
         color: "var(--cream)",
       }}
     >
-      <MusicToggle />
-
       <img
         src={mandala}
         alt=""

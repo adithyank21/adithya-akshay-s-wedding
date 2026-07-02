@@ -15,16 +15,25 @@ declare global {
   }
 }
 
-export function MusicToggle() {
+export function MusicToggle({ showButton = true }: { showButton?: boolean }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
 
-  useEffect(() => {
+  const getAudio = () => {
+    if (audioRef.current) return audioRef.current;
+    if (typeof window === "undefined") return null;
+
     const audio = new Audio(weddingMusic);
     audio.loop = true;
-    audio.preload = "auto";
+    audio.preload = "none";
     audio.volume = 0.7;
     audioRef.current = audio;
+    return audio;
+  };
+
+  useEffect(() => {
+    const audio = getAudio();
+    if (!audio) return;
 
     const onPlay = () => setPlaying(true);
     const onPause = () => setPlaying(false);
@@ -32,18 +41,23 @@ export function MusicToggle() {
     audio.addEventListener("play", onPlay);
     audio.addEventListener("pause", onPause);
 
-    // Expose controller
-    window.weddingMusicControl = {
+    const controller = {
       play: async () => {
+        const audio = getAudio();
+        if (!audio) return;
         try {
           await audio.play();
         } catch (e) {
-          // play may reject if not a user gesture; caller should handle UI fallback
           console.warn("Audio play rejected:", e);
         }
       },
-      pause: () => audio.pause(),
+      pause: () => {
+        const audio = audioRef.current;
+        if (audio) audio.pause();
+      },
       toggle: async () => {
+        const audio = getAudio();
+        if (!audio) return;
         if (audio.paused) {
           try {
             await audio.play();
@@ -54,8 +68,13 @@ export function MusicToggle() {
           audio.pause();
         }
       },
-      isPlaying: () => !audio.paused,
+      isPlaying: () => {
+        const audio = audioRef.current;
+        return !!audio && !audio.paused;
+      },
     };
+
+    window.weddingMusicControl = controller;
 
     return () => {
       audio.pause();
@@ -67,7 +86,7 @@ export function MusicToggle() {
   }, []);
 
   const handleToggle = async () => {
-    const audio = audioRef.current;
+    const audio = getAudio();
     if (!audio) return;
     if (audio.paused) {
       try {
@@ -80,24 +99,23 @@ export function MusicToggle() {
     }
   };
 
+  if (!showButton) return null;
+
   return (
-    <>
-      {/* keep the floating UI the same */}
-      <button
-        onClick={handleToggle}
-        aria-label={playing ? "Pause music" : "Play music"}
-        className="fixed bottom-4 right-4 z-50 flex items-center gap-2 rounded-full bg-royal px-3.5 py-2 shadow-royal transition hover:scale-105 sm:bottom-6 sm:right-6 sm:px-4 sm:py-2.5"
-        style={{ color: "var(--cream)" }}
-      >
-        <span
-          className={`inline-block h-2 w-2 rounded-full ${
-            playing ? "bg-[--gold] animate-pulse" : "bg-[--gold-soft]"
-          }`}
-        />
-        <span className="font-display text-[9px] tracking-widest sm:text-[10px]">
-          {playing ? "PAUSE" : "PLAY"} · MUSIC
-        </span>
-      </button>
-    </>
+    <button
+      onClick={handleToggle}
+      aria-label={playing ? "Pause music" : "Play music"}
+      className="fixed bottom-4 right-4 z-50 flex items-center gap-2 rounded-full bg-royal px-3.5 py-2 shadow-royal transition hover:scale-105 sm:bottom-6 sm:right-6 sm:px-4 sm:py-2.5"
+      style={{ color: "var(--cream)" }}
+    >
+      <span
+        className={`inline-block h-2 w-2 rounded-full ${
+          playing ? "bg-[--gold] animate-pulse" : "bg-[--gold-soft]"
+        }`}
+      />
+      <span className="font-display text-[9px] tracking-widest sm:text-[10px]">
+        {playing ? "MUTE" : "PLAY"} · MUSIC
+      </span>
+    </button>
   );
 }
