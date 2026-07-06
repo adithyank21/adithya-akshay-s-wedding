@@ -164,11 +164,6 @@ function Invitation() {
           <p className="mt-7 font-display text-xs tracking-[0.5em] text-[--cream]">
             22 · AUGUST · 2026  ·  KANNUR
           </p>
-
-          <div className="mx-auto mt-8 flex max-w-[220px] flex-col items-center gap-2 rounded-full border border-[--gold]/40 bg-[--gold]/10 px-4 py-3 text-[10px] uppercase tracking-[0.4em] text-[--gold] shadow-[0_10px_30px_-20px_oklch(0.72_0.13_80/0.5)] sm:hidden">
-            <span>Scroll for details</span>
-            <span className="text-2xl animate-bounce">↓</span>
-          </div>
         </section>
 
         {/* BANNER */}
