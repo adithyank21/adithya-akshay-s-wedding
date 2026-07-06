@@ -117,7 +117,7 @@ function Invitation() {
 
   return (
     <main
-      className="relative min-h-[100svh] overflow-hidden"
+      className="relative min-h-[100svh]"
       style={{
         background:
           "radial-gradient(circle at 50% -10%, oklch(0.40 0.13 28) 0%, oklch(0.22 0.10 25) 60%, oklch(0.16 0.08 25) 100%)",
@@ -133,7 +133,7 @@ function Invitation() {
 
       <div className="relative mx-auto w-full max-w-3xl px-4 pb-16 pt-8 sm:px-6 sm:pt-12">
         {/* HERO CARD */}
-        <section className="animate-fade-up rounded-xl border border-[--gold]/40 bg-[--maroon-deep]/50 px-6 py-14 text-center shadow-royal backdrop-blur-sm transition duration-500 hover:border-[--gold]/70 sm:px-14 sm:py-20">
+        <section className="animate-fade-up rounded-xl border border-[--gold]/40 bg-[--maroon-deep]/50 px-6 py-12 text-center shadow-royal backdrop-blur-sm transition duration-500 hover:border-[--gold]/70 sm:px-14 sm:py-20">
           <img src={lotus} alt="" aria-hidden className="mx-auto h-12 w-auto" />
           <p className="mt-6 font-display text-[10px] tracking-[0.6em] text-[--gold]">
             WEDDING · INVITATION
@@ -164,6 +164,11 @@ function Invitation() {
           <p className="mt-7 font-display text-xs tracking-[0.5em] text-[--cream]">
             22 · AUGUST · 2026  ·  KANNUR
           </p>
+
+          <div className="mx-auto mt-8 flex max-w-[220px] flex-col items-center gap-2 rounded-full border border-[--gold]/40 bg-[--gold]/10 px-4 py-3 text-[10px] uppercase tracking-[0.4em] text-[--gold] shadow-[0_10px_30px_-20px_oklch(0.72_0.13_80/0.5)] sm:hidden">
+            <span>Scroll for details</span>
+            <span className="text-2xl animate-bounce">↓</span>
+          </div>
         </section>
 
         {/* BANNER */}
@@ -222,7 +227,7 @@ function Invitation() {
               badge="RECEPTION"
               title="Century  Convention Center"
               place="Manjery, Malappuram"
-              when="23 AUG 2026 · SUNDAY · 1:00 PM – 4:00 PM"
+              when="23 AUG 2026 · SUNDAY · 11:00 AM – 2:00 PM"
               blurb="An evening of music, feasting and joyful togetherness."
               mapQuery="Century Convention Center Manjery Malappuram"
             />
