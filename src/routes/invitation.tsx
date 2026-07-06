@@ -117,7 +117,7 @@ function Invitation() {
 
   return (
     <main
-      className="relative min-h-[100svh]"
+      className="relative min-h-[100svh] overflow-x-hidden"
       style={{
         background:
           "radial-gradient(circle at 50% -10%, oklch(0.40 0.13 28) 0%, oklch(0.22 0.10 25) 60%, oklch(0.16 0.08 25) 100%)",
