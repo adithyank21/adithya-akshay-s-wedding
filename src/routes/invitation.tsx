@@ -221,10 +221,10 @@ function Invitation() {
             <VenueCard
               badge="RECEPTION"
               title="Century  Convention Center"
-              place="Manjery, Malappuram"
+              place="Manjeri, Malappuram"
               when="23 AUG 2026 · SUNDAY · 11:00 AM – 2:00 PM"
               blurb="An afternoon filled with love, laughter, delicious food, and unforgettable memories."
-              mapQuery="Century Convention Center Manjery Malappuram"
+              mapQuery="Century Convention Center Manjeri Malappuram"
             />
           </div>
         </section>
